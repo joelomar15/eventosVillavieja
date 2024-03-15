@@ -17,44 +17,38 @@ class Cliente
         $enviar = mysqli_query($this->db, $mostrar);
         return $enviar;
     }
+    function buscarCliente($id)
+    {
+        $mostrar = "SELECT *
+    FROM
+       clientes where id=$id;";
+        $enviar = mysqli_query($this->db, $mostrar);
+        return $enviar;
+    }
 
 
     function insertarCliente()
     {
-        $cliente = $_POST['cliente'] ?? null;
-        $tipoEvento = $_POST['tipoEvento'] ?? null;
-        $lugar = $_POST['lugar'] ?? null;
-        $fecha = $_POST['fecha'] ?? null;
-        $hora = $_POST['hora'] ?? null;
-        $numAsistentes = $_POST['numAsistentes'] ?? null;
-        $costoPersona = $_POST['costoPersona'] ?? null;
-        $confirmacion = $_POST['confirmacion'] ?? null;
-        $observacion = $_POST['observacion'] ?? null;
+        $nombre = $_POST['nombre'] ?? null;
+        $telefono = $_POST['telefono'] ?? null;
+        $correo = $_POST['correo'] ?? null;
 
-        $mostrar = "INSERT INTO eventos VALUES (0,1,$cliente,$tipoEvento,$lugar,'$fecha',$hora,$numAsistentes,$costoPersona,'$confirmacion','$observacion','1')";
+        $mostrar = "INSERT INTO clientes VALUES (0,'$nombre','$telefono','$correo','1')";
         mysqli_query($this->db, $mostrar);
-        header("location:../tablas/tablaEventos.php");
+        header("location:../tablas/tablaCliente.php");
     }
 
     
     function actualizarCliente()
     {
-        $idEvento = $_POST['idEvento'] ?? null;
-        $cliente = $_POST['cliente'] ?? null;
-        $tipoEvento = $_POST['tipoEvento'] ?? null;
-        $lugar = $_POST['lugar'] ?? null;
-        $fecha = $_POST['fecha'] ?? null;
-        $hora = $_POST['hora'] ?? null;
-        $numAsistentes = $_POST['numAsistentes'] ?? null;
-        $costoPersona = $_POST['costoPersona'] ?? null;
-        $confirmacion = $_POST['confirmacion'] ?? null;
-        $observacion = $_POST['observacion'] ?? null;
+        $idCliente = $_POST['idCliente'] ?? null;
+        $nombre = $_POST['nombre'] ?? null;
+        $telefono = $_POST['telefono'] ?? null;
+        $correo = $_POST['correo'] ?? null;
 
-        $mostrar = "UPDATE eventos 
-        SET id_usuario='1',id_cliente='$cliente',id_tipos='$tipoEvento',
-        id_lugar='$lugar',fecha='$fecha',horas='$hora',asistentes='$numAsistentes',
-        costoPersona='$costoPersona',confirmacion='$confirmacion',observacion='$observacion' WHERE id=$idEvento";
+        $mostrar = "UPDATE clientes 
+        SET nombre='$nombre',telefono='$telefono',correo='$correo' WHERE id=$idCliente";
         mysqli_query($this->db, $mostrar);
-        header("location:../tablas/tablaEventos.php");
+        header("location:../tablas/tablaCliente.php");
     }
 }

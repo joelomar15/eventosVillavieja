@@ -1,15 +1,14 @@
 <?php
 
-include "../modelo/Evento.php";
 include "../modelo/Cliente.php";
 $OpcionesClientes = new Cliente();
 $id = 0;
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $result = $Opciones->buscarEvento($id);
+    $result = $OpcionesClientes->buscarCliente($id);
     $dato = mysqli_fetch_assoc($result);
 } else {
-    header("Location: ../Tablas/tablaEventos.php");
+    header("Location: ../Tablas/tablaCliente.php");
     exit();
 }
 
@@ -80,30 +79,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="" style="padding:50px;">
         <div class="">
             <form class="row g-3 needs-validation" method="post" enctype="multipart/form-data">
+            <input type="hidden" class="form-control" id="" name="idCliente" value="<?php echo $dato["id"]; ?>" required>
                 <div class="col-md-3">
                     <label for="validationCustom03" class="form-label">Ingrese el Nombre del Cliente:</label>
-                    <input type="text" class="form-control" id="validationCustom03" name="nombre" required>
+                    <input type="text" class="form-control" id="validationCustom03" name="nombre" value="<?php echo $dato["nombre"]; ?>" required>
                     <div class="invalid-feedback">
                         Ingrese la Fecha.
                     </div>
                 </div>
                 <div class="col-md-3">
                     <label for="validationCustom03" class="form-label">Ingrese el Teléfono del Cliente:</label>
-                    <input type="text" class="form-control" id="validationCustom03" name="telefono" required>
+                    <input type="text" class="form-control" id="validationCustom03" name="telefono" value="<?php echo $dato["telefono"]; ?>" required>
                     <div class="invalid-feedback">
                         Ingrese la Hora.
                     </div>
                 </div>
                 <div class="col-md-3">
                     <label for="validationCustom03" class="form-label">Ingrese el Correo del Cliente:</label>
-                    <input type="text" class="form-control" id="validationCustom03" name="correo" required>
+                    <input type="text" class="form-control" id="validationCustom03" name="correo" value="<?php echo $dato["correo"]; ?>" required>
                     <div class="invalid-feedback">
                         Ingrese el número de Asistentes.
                     </div>
                 </div>
                 <div class="col-12"><br>
                     <center>
-                        <button class="btn btn-success" type="submit">Registrar</button>
+                        <button class="btn btn-success" type="submit">Actualizar</button>
                     </center>
                 </div>
             </form>
