@@ -1,19 +1,6 @@
-<?php
-
-include "../modelo/Evento.php";
-include "../modelo/Cliente.php";
-$OpcionesClientes = new Cliente();
-
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    $resultado = $OpcionesClientes->insertarCliente();
-}
-
-?>
 
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
@@ -47,55 +34,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="collapse navbar-collapse" id="navbarColor03">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="../tablas/tablaEventos.php">Tabla Eventos</a>
+                        <a class="nav-link" href="tablas/tablaEventos.php">Tabla Eventos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../tablas/tablaCliente.php">Tabla Clientes</a>
+                        <a class="nav-link" href="tablas/tablaCliente.php">Tabla Clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="NuevoEvento.php">Nuevo Evento</a>
+                        <a class="nav-link" href="form/NuevoEvento.php">Nuevo Evento</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page">Nuevo Clientes</a>
+                        <a class="nav-link" href="form/NuevoCliente.php">Nuevo Clientes</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a style="color: black;" href="../salir.php" class="btn btn-info"><i class="glyphicon glyphicon-close"></i> Salir</a>
+                    <li class="nav-item" >
+                        <a style="color: black;" href="salir.php" class="btn btn-info"><i class="glyphicon glyphicon-close"></i> Salir</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="" style="padding:50px;">
+    <div class="" style="padding: 20px 50px 0px 50px;">
         <div class="">
-            <form class="row g-3 needs-validation" method="post" enctype="multipart/form-data">
-                <div class="col-md-3">
-                    <label for="validationCustom03" class="form-label">Ingrese el Nombre del Cliente:</label>
-                    <input type="text" class="form-control" id="validationCustom03" name="nombre" required>
-                    <div class="invalid-feedback">
-                        Ingrese la Fecha.
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <label for="validationCustom03" class="form-label">Ingrese el Teléfono del Cliente:</label>
-                    <input type="text" class="form-control" id="validationCustom03" name="telefono" required>
-                    <div class="invalid-feedback">
-                        Ingrese la Hora.
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <label for="validationCustom03" class="form-label">Ingrese el Correo del Cliente:</label>
-                    <input type="text" class="form-control" id="validationCustom03" name="correo" required>
-                    <div class="invalid-feedback">
-                        Ingrese el número de Asistentes.
-                    </div>
-                </div>
-                <div class="col-12"><br>
-                    <center>
-                    <button class="btn btn-success" type="submit">Registrar</button></center>
-                </div>
-            </form>
+            
+           
         </div>
     </div>
 
@@ -116,25 +78,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- AdminLTE for demo purposes -->
 <script src="../template/dist/js/demo.js"></script>
 <script>
-    (function() {
-        'use strict'
-
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
-        Array.prototype.slice.call(forms)
-            .forEach(function(form) {
-                form.addEventListener('submit', function(event) {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-
-                    form.classList.add('was-validated')
-                }, false)
-            })
-    })()
+    $(function() {
+        $('#example1').DataTable()
+        $('#example2').DataTable({
+            'paging': true,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false
+        })
+    })
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
 </script>
+
+
+
 
 </html>

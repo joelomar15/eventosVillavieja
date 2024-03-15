@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a style="color: black;" href="../form/NuevoEvento.php" class="btn btn-info"><i class="glyphicon glyphicon-close"></i> Salir</a>
+                        <a style="color: black;" href="../salir.php" class="btn btn-info"><i class="glyphicon glyphicon-close"></i> Salir</a>
                     </li>
                 </ul>
             </div>
@@ -110,7 +110,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         Elia un Lugar.
                     </div>
                 </div>
-
                 <div class="col-md-3">
                     <label for="validationCustom04" class="form-label">Elija la Fecha:</label>
                     <input type="date" class="form-control" id="validationCustom03" name="fecha" required>
@@ -182,7 +181,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $(document).ready(function() {
         $('input[type="radio"]').change(function() {
             var valorOpcion = this.value;
-            if (valorOpcion == 0) {
+            if (valorOpcion == 1) {
                 $('input[name="observacion"]').prop('disabled', true);
                 $('input[name="observacion"]').val("");
             } else {

@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a style="color: black;" href="../form/NuevoEvento.php" class="btn btn-info"><i class="glyphicon glyphicon-close"></i> Salir</a>
+                        <a style="color: black;" href="../salir.php" class="btn btn-info"><i class="glyphicon glyphicon-close"></i> Salir</a>
                     </li>
                 </ul>
             </div>

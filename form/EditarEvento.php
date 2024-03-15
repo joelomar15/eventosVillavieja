@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a style="color: black;" href="../form/NuevoEvento.php" class="btn btn-info"><i class="glyphicon glyphicon-close"></i> Salir</a>
+                        <a style="color: black;" href="../salir.php" class="btn btn-info"><i class="glyphicon glyphicon-close"></i> Salir</a>
                     </li>
                 </ul>
             </div>
@@ -172,7 +172,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="col-md-3">
                     <label for="validationCustom03" class="form-label">Observación:</label>
-                    <input type="text" class="form-control" id="validationCustom03" name="observacion" value="<?php echo $dato["observacion"]; ?>" <?php echo ($dato["confirmacion"] == 0) ? "disabled" : ""; ?>>
+                    <input type="text" class="form-control" id="validationCustom03" name="observacion" value="<?php echo $dato["observacion"]; ?>" <?php echo ($dato["confirmacion"] == 1) ? "disabled" : ""; ?>>
                     <div class="invalid-feedback">
                         Ingrese una observación.
                     </div>
@@ -206,7 +206,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $(document).ready(function() {
         $('input[type="radio"]').change(function() {
             var valorOpcion = this.value;
-            if (valorOpcion == 0) {
+            if (valorOpcion == 1) {
                 $('input[name="observacion"]').prop('disabled', true);
                 $('input[name="observacion"]').val("");
             } else {
