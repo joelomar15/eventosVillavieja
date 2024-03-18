@@ -44,10 +44,7 @@ $resultado = $Opciones->listarEvento();
             <nav class="navbar navbar-static-top">
                 <div class="container">
                     <div class="navbar-header">
-                        <a href="principal.php" class="navbar-brand"><b>VILLAVIEJA</b>Eventos</a>
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-                            <i class="fa fa-bars"></i>
-                        </button>
+                        <a href="../principal.php" class="navbar-brand"><b>VILLAVIEJA</b>Eventos</a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -108,7 +105,7 @@ $resultado = $Opciones->listarEvento();
             <div style="padding-bottom: 10px;">
                 <a href="../form/NuevoEvento.php" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Nuevo Evento</a>
             </div>
-            <table id="example" class="table table-striped"  style="width:100%;">
+            <table id="example" class="table table-striped" style="width:100%;">
                 <thead>
                     <tr>
                         <th>Nº</th>

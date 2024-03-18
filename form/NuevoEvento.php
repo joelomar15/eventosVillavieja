@@ -51,10 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <nav class="navbar navbar-static-top">
                 <div class="container">
                     <div class="navbar-header">
-                        <a href="principal.php" class="navbar-brand"><b>VILLAVIEJA</b>Eventos</a>
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-                            <i class="fa fa-bars"></i>
-                        </button>
+                        <a href="../principal.php" class="navbar-brand"><b>VILLAVIEJA</b>Eventos</a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -63,7 +60,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <li><a href="../tablas/tablaEventos.php">Tabla Eventos</a></li>
                             <li><a href="../tablas/tablaCliente.php">Tabla Clientes</a></li>
                             <li><a style="background-color:#385B6F ;" href="#">Nuevo Evento<span class="sr-only">(current)</span></a></li>
-                            <li><a href="NuevoCliente.php">Nuevo Cliente</a></li>                        </ul>
+                            <li><a href="NuevoCliente.php">Nuevo Cliente</a></li>
+                        </ul>
                     </div>
                     <!-- /.navbar-collapse -->
                     <!-- Navbar Right Menu -->
@@ -104,6 +102,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </nav>
         </header>
         <div class="content-wrapper" style="padding:30px;">
+            <center>
+                <section class="content-header" style="margin-bottom: 50px;">
+                    <h1>
+                        Crear Nuevo Evento
+                    </h1>
+                </section>
+            </center>
             <form class="row g-3 needs-validation" method="post" enctype="multipart/form-data">
                 <div class="col-md-6">
                     <label for="validationCustom01" class="form-label">Lista de Clientes</label>
@@ -159,7 +164,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="col-12"><br>
                     <center>
-                        <button class="btn btn-success" type="submit">Registrar</button>
+                        <button class="btn btn-success" style="margin-top: 40px;" type="submit">Registrar</button>
                     </center>
                 </div>
             </form>

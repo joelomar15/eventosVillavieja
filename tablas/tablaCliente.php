@@ -45,10 +45,7 @@ $resultado = $Opciones->listarCliente();
             <nav class="navbar navbar-static-top">
                 <div class="container">
                     <div class="navbar-header">
-                        <a href="principal.php" class="navbar-brand"><b>VILLAVIEJA</b>Eventos</a>
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-                            <i class="fa fa-bars"></i>
-                        </button>
+                        <a href="../principal.php" class="navbar-brand"><b>VILLAVIEJA</b>Eventos</a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->

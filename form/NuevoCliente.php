@@ -48,10 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <nav class="navbar navbar-static-top">
                 <div class="container">
                     <div class="navbar-header">
-                        <a href="principal.php" class="navbar-brand"><b>VILLAVIEJA</b>Eventos</a>
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-                            <i class="fa fa-bars"></i>
-                        </button>
+                        <a href="../principal.php" class="navbar-brand"><b>VILLAVIEJA</b>Eventos</a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -102,6 +99,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </nav>
         </header>
         <div class="content-wrapper" style="padding:30px;">
+            <center>
+                <section class="content-header" style="margin-bottom: 50px;">
+                    <h1>
+                        Crear Nuevo Cliente
+                    </h1>
+                </section>
+            </center>
             <form class="row g-3 needs-validation" method="post" enctype="multipart/form-data">
                 <div class="col-md-3">
                     <label for="validationCustom03" class="form-label">Ingrese el Nombre del Cliente:</label>
