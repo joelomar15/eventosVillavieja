@@ -3,7 +3,7 @@
 include "../modelo/Cliente.php";
 session_start();
 if (!isset($_SESSION['usuario'])) {
-    header('location: login.php');
+    header('location: ../login.php');
 }
 $Opciones = new Cliente();
 $resultado = $Opciones->listarCliente();
@@ -46,6 +46,9 @@ $resultado = $Opciones->listarCliente();
                 <div class="container">
                     <div class="navbar-header">
                         <a href="../principal.php" class="navbar-brand"><b>VILLAVIEJA</b>Eventos</a>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                            <i class="fa fa-bars"></i>
+                        </button>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -96,12 +99,14 @@ $resultado = $Opciones->listarCliente();
             </nav>
         </header>
         <!-- Full Width Column -->
-        <div class="content-wrapper" style="padding: 30px;">
-            <center><section class="content-header">
-                <h1>
-                    Lista de Clientes
-                </h1>
-            </section></center>
+        <div class="content-wrapper table-responsive" style="padding: 30px;">
+            <center>
+                <section class="content-header">
+                    <h1>
+                        Lista de Clientes
+                    </h1>
+                </section>
+            </center>
             <div style="padding-bottom: 10px;">
                 <a href="../form/NuevoCliente.php" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Nuevo Cliente</a>
             </div>

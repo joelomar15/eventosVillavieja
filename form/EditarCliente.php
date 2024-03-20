@@ -3,7 +3,7 @@
 include "../modelo/Cliente.php";
 session_start();
 if (!isset($_SESSION['usuario'])) {
-    header('location: login.php');
+    header('location: ../login.php');
 }
 $OpcionesClientes = new Cliente();
 $id = 0;
@@ -58,6 +58,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="container">
                     <div class="navbar-header">
                         <a href="../principal.php" class="navbar-brand"><b>VILLAVIEJA</b>Eventos</a>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                            <i class="fa fa-bars"></i>
+                        </button>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->

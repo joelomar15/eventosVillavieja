@@ -3,10 +3,16 @@
 include "../modelo/Evento.php";
 session_start();
 if (!isset($_SESSION['usuario'])) {
-    header('location: login.php');
+    header('location: ../login.php');
 }
 $Opciones = new Evento();
 $resultado = $Opciones->listarEvento();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $Opciones->generarPDF();
+}
+
 
 ?>
 
@@ -45,6 +51,9 @@ $resultado = $Opciones->listarEvento();
                 <div class="container">
                     <div class="navbar-header">
                         <a href="../principal.php" class="navbar-brand"><b>VILLAVIEJA</b>Eventos</a>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                            <i class="fa fa-bars"></i>
+                        </button>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -65,14 +74,14 @@ $resultado = $Opciones->listarEvento();
                                 <!-- Menu Toggle Button -->
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <!-- The user image in the navbar-->
-                                    <img src="template/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                    <img src="../template/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                                     <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                     <span class="hidden-xs"><?php echo $_SESSION['usuario']; ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- The user image in the menu -->
                                     <li class="user-header">
-                                        <img src="template/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                        <img src="../template/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                         <p>
                                             <?php echo $_SESSION['usuario']; ?>
@@ -82,7 +91,7 @@ $resultado = $Opciones->listarEvento();
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-right">
-                                            <a href="salir.php" class="btn btn-default btn-flat">Cerrar Sesión</a>
+                                            <a href="../salir.php" class="btn btn-default btn-flat">Cerrar Sesión</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -94,7 +103,7 @@ $resultado = $Opciones->listarEvento();
                 <!-- /.container-fluid -->
             </nav>
         </header>
-        <div class="content-wrapper" style="padding: 30px;">
+        <div class="content-wrapper table-responsive" style="padding: 30px;">
             <center>
                 <section class="content-header">
                     <h1>
@@ -102,8 +111,15 @@ $resultado = $Opciones->listarEvento();
                     </h1>
                 </section>
             </center>
-            <div style="padding-bottom: 10px;">
-                <a href="../form/NuevoEvento.php" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Nuevo Evento</a>
+            <div>
+                <div class="col-md-6" style="margin-bottom: 2%;">
+                    <a href="../form/NuevoEvento.php" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Nuevo Evento</a>
+                </div>
+                <div class="col-md-6" style="margin-bottom: 2%; text-align: right;">
+                    <form method="post">
+                        <button type="submit" id="export_data" name='export_data' value="Export to excel" class="btn btn-success">Exportar a Excel</button>
+                    </form>
+                </div>
             </div>
             <table id="example" class="table table-striped" style="width:100%;">
                 <thead>
