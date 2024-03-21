@@ -20,7 +20,7 @@ class Usuario
     function buscarUsuario()
     {
         $usuario = $_POST['usuario'] ?? null;
-        $password = $_POST['password'] ?? null;
+        $password = md5($_POST['password']) ?? null;
         $mostrar = "SELECT *
     FROM
     usuarios where nombre='$usuario' and clave='$password';";
