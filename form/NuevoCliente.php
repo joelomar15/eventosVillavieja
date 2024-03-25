@@ -61,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <li><a href="../tablas/tablaCliente.php">Tabla Clientes</a></li>
                             <li><a href="NuevoEvento.php">Nuevo Evento</a></li>
                             <li><a style="background-color:#385B6F ;" href="#">Nuevo Cliente<span class="sr-only">(current)</span></a></li>
+                            <li><a href="CambiarContrasenia.php">Cambiar Contraseña</a></li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->

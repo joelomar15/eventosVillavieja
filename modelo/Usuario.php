@@ -28,13 +28,16 @@ class Usuario
         return $enviar;
     }
 
-
-    function insertarCliente()
+    function cambiarContrasenia()
     {
-    }
-
-
-    function actualizarCliente()
-    {
+        $usuId = $_SESSION['usuarioId'];
+        $password = $_POST['password'] ?? null;
+        if ($password !== null) {
+            $password_md5 = md5($password);
+            // Usa $password_md5 como la contraseña codificada en MD5
+        }
+        $mostrar = "UPDATE usuarios SET clave='$password_md5' WHERE id = $usuId";
+        $enviar = mysqli_query($this->db, $mostrar);
+        echo '<script> alert("Su contraseña fue actualizada correctamente.")</script>';
     }
 }

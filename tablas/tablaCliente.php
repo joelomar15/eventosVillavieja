@@ -58,6 +58,7 @@ $resultado = $Opciones->listarCliente();
                             <li><a style="background-color:#385B6F ;" href="#">Tabla Clientes<span class="sr-only">(current)</span></a></li>
                             <li><a href="../form/NuevoEvento.php">Nuevo Evento</a></li>
                             <li><a href="../form/NuevoCliente.php">Nuevo Cliente</a></li>
+                            <li><a href="../form/CambiarContrasenia.php">Cambiar Contraseña</a></li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->

@@ -1,28 +1,15 @@
 <?php
-
-include "../modelo/Cliente.php";
 session_start();
 if (!isset($_SESSION['usuario'])) {
     header('location: ../login.php');
 }
-$OpcionesClientes = new Cliente();
-$id = 0;
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $result = $OpcionesClientes->buscarCliente($id);
-    $dato = mysqli_fetch_assoc($result);
-} else {
-    header("Location: ../Tablas/tablaCliente.php");
-    exit();
-}
-
-
+include "../modelo/Usuario.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    $resultado = $OpcionesClientes->actualizarCliente();
+    $opcion = new Usuario();
+    $opcion->cambiarContrasenia();
 }
-
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -50,6 +37,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+<style>
+    .btnVer:hover {
+        cursor: pointer;
+    }
+</style>
 
 <body class="hold-transition skin-blue layout-top-nav">
     <div class="wrapper">
@@ -70,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <li><a href="../tablas/tablaCliente.php">Tabla Clientes</a></li>
                             <li><a href="NuevoEvento.php">Nuevo Evento</a></li>
                             <li><a href="NuevoCliente.php">Nuevo Cliente</a></li>
-                            <li><a href="CambiarContrasenia.php">Cambiar Contraseña</a></li>
+                            <li><a style="background-color:#385B6F ;" href="#">Cambiar Contraseña<span class="sr-only">(current)</span></a></li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
@@ -115,30 +107,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <center>
                 <section class="content-header" style="margin-bottom: 50px;">
                     <h1>
-                        Editar Cliente
+                        Actualizar Contraseña
                     </h1>
                 </section>
             </center>
-            <form class="row g-3 needs-validation" method="post" enctype="multipart/form-data">
-                <input type="hidden" class="form-control" id="" name="idCliente" value="<?php echo $dato["id"]; ?>" required>
-                <div class="col-md-3">
-                    <label for="validationCustom03" class="form-label">Ingrese el Nombre del Cliente:</label>
-                    <input type="text" class="form-control" id="validationCustom03" name="nombre" value="<?php echo $dato["nombre"]; ?>" required>
+            <form role="form" action="" method="post" enctype="multipart/form-data">
+                <div class="col-md-12">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>Ingresa una Nueva Contraseña:</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                <input type="password" id="password" name="password" class="form-control">
+                                <span class="input-group-addon btnVer" id="verPass"><i class="fa fa-eye"></i></span>
+                            </div>
+                            <!-- /.input group -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <center><button type="submit" value="upload" class="btn btn-success"><i class="fa fa-edit"></i>
+                                Cambiar Contraseña</button></center>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <label for="validationCustom03" class="form-label">Ingrese el Teléfono del Cliente:</label>
-                    <input type="text" class="form-control" id="validationCustom03" name="telefono" value="<?php echo $dato["telefono"]; ?>" required>
-                </div>
-                <div class="col-md-3">
-                    <label for="validationCustom03" class="form-label">Ingrese el Correo del Cliente:</label>
-                    <input type="text" class="form-control" id="validationCustom03" name="correo" value="<?php echo $dato["correo"]; ?>" required>
-                </div>
-                <div class="col-12"><br>
-                    <center>
-                        <button class="btn btn-success" type="submit">Actualizar</button>
-                    </center>
-                </div>
+                <!-- /.box-body -->
             </form>
+
         </div>
     </div>
 
@@ -159,38 +153,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="../template/dist/js/demo.js"></script>
 </body>
 <script>
-    $(document).ready(function() {
-        $('input[type="radio"]').change(function() {
-            var valorOpcion = this.value;
-            if (valorOpcion == 0) {
-                $('input[name="observacion"]').prop('disabled', true);
-                $('input[name="observacion"]').val("");
-            } else {
-                $('input[name="observacion"]').prop('disabled', false);
-            }
-        });
-    });
-</script>
-<script>
-    (function() {
-        'use strict'
-
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
-        Array.prototype.slice.call(forms)
-            .forEach(function(form) {
-                form.addEventListener('submit', function(event) {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
+            $(document).ready(function() {
+                $('#verPass').click(function() {
+                    var passwordInput = $('#password');
+                    var fieldType = passwordInput.attr('type');
+                    if (fieldType === 'password') {
+                        passwordInput.attr('type', 'text');
+                        $('#verPass i').removeClass('fa-eye').addClass('fa-eye-slash');
+                    } else {
+                        passwordInput.attr('type', 'password');
+                        $('#verPass i').removeClass('fa-eye-slash').addClass('fa-eye');
                     }
-
-                    form.classList.add('was-validated')
-                }, false)
-            })
-    })()
-</script>
+                });
+            });
+        </script>
 
 </html>
