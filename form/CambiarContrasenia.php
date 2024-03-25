@@ -119,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <label>Ingresa una Nueva Contraseña:</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                <input type="password" id="password" name="password" class="form-control">
+                                <input type="password" id="password" name="password" class="form-control" required>
                                 <span class="input-group-addon btnVer" id="verPass"><i class="fa fa-eye"></i></span>
                             </div>
                             <!-- /.input group -->
